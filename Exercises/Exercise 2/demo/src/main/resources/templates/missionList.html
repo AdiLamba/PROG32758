@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mission List</title>
+</head>
+<body>
+<h1>Welcome To The Mission List!</h1>
+<h2>Here are the current missions!</h2>
+<ol>
+    <li th:each="missionItem : ${currentMissions}" th:text="${missionItem}"></li>
+</ol>
+<p>Please click here to <a href="/index">go home.</a></p>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Mission</title>
+</head>
+<body>
+<h1>Adding Mission!</h1>
+<p>Please enter the details of the new mission!</p>
+<form action="/addNew" method="POST">
+    Mission Name: <input type="text" name="missionName">
+    Agent Name: <input type="text" name="agentName">
+    <input type="submit" value="submit">
+</form>
+</body>
+</html>
