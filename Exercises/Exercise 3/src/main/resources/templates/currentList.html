@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Current School List</title>
+</head>
+<body>
+<div th:if="${schoolList.empty}">
+    <h1>There are currently no schools on the list.</h1>
+</div>
+<div th:unless="${schoolList.empty}">
+    <h1>Here is the current school list!</h1>
+    <table>
+        <tr>
+            <th>School Name</th>
+            <th>School City</th>
+            <th>Number of Students</th>
+        </tr>
+        <tr th:each="school : ${schoolList}">
+            <td th:text="${school.name}"></td>
+            <td th:text="${school.city}"></td>
+            <td th:text="${school.numOfStudents}"></td>
+        </tr>
+    </table>
+</div>
+<p>Click here to <a href="/addNewSchool">add another school!</a></p>
+<p>Click here to <a href="/">go home!</a></p>
+</body>
+</html>

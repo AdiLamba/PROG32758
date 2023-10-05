@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add School</title>
+</head>
+<body>
+<h1>Please Add A School To The List!</h1>
+<form action="#" th:action="@{/addSchool}" method="POST" th:object="${school}">
+    <p>Name of School: <input type="text" th:field="*{name}"></p>
+    <p>Location: <select th:field="*{city}">
+        <option th:each="city : ${school.getCities()}"
+                th:value="${city}" th:text="${city}"></option>
+    </select>
+    </p>
+    <p>Number of Students: <input type="number" th:field="*{numOfStudents}"></p>
+    <input type="submit" value="Add!">
+</form>
+</body>
+</html>
