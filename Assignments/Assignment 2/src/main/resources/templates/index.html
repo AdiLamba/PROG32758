@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<h1>Enter Book Details</h1>
+<form action="#" th:action="@{/addBook}" method="POST" th:object="${book}">
+    <p>ISBN Number: <input type="text" th:field="*{isbnNo}"></p>
+    <p>Book Name: <input type="text" th:field="*{bookName}"></p>
+    <p>Author Name: <input type="text" th:field="*{authorName}"></p>
+    <p>Role:
+        <select th:field="*{role}">
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+        </select>
+    </p>
+    <input type="submit" value="Add!">
+</form>
+<div th:if="${database.bookCount == 0}"><h1>There are currently no books in the list!</h1></div>
+<div th:unless="${database.bookCount == 0}"><h1>Here are the current books!</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>ISBN Number</th>
+            <th>Book Name</th>
+            <th>Author Name</th>
+            <th>Role</th>
+            <th>Creation Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${database.getBooks()}">
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.isbnNo}"></td>
+            <td th:text="${book.bookName}"></td>
+            <td th:text="${book.authorName}"></td>
+            <td th:text="${book.role}"></td>
+            <td th:text="${#dates.format(book.creationDate, 'dd-MM-yyyy HH:mm:ss')}"></td>
+            <td>
+                <a th:if="${book.role == 'Admin'}" th:href="|/delete/${book.id}|">Delete</a>
+                <span th:if="${book.role == 'User'}">User Only</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
