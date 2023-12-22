@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Review Page</title>
+</head>
+<body>
+<h1>Add your review!</h1>
+<form th:action="@{'/addNewReview/' + ${bookId}}" method="post">
+    <label for="review">Your Review:</label>
+    <textarea id="review" name="text" rows="5" cols="50" th:required="true"></textarea>
+    <br>
+    <button type="submit">Add Review</button>
+</form>
+<br>
+<a href="@{/}">Return to Index</a>
+</body>
+</html>

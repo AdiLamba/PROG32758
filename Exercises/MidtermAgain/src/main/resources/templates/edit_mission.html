@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/updateMission/{id}" method="POST">
+    <select name="agent" th:field="${mission.agent}">
+        <option value="">Select an Agent</option>
+        <th:block th:each="agent : ${agentNames}">
+            <option th:value="${agent}" th:text="${agent}"></option>
+        </th:block>
+    </select>
+    <br>
+    <label for="gadget1">Gadget 1:</label>
+    <input type="text" id="gadget1" name="gadget1" th:field="${mission.gadget1}">
+    <br>
+    <label for="gadget2">Gadget 2:</label>
+    <input type="text" id="gadget2" name="gadget2" th:field="${mission.gadget2}">
+    <br>
+    <input type="submit" value="Update Mission">
+</form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<h1>Welcome To The Super Cool Spy App!</h1>
+<h2>Create A Mission!</h2>
+<form action="/toCreate" method="GET">
+    <input type="submit" value="Create A Mission!">
+</form>
+<h2>View Missions For:</h2>
+<form action="/viewMissions" method="GET">
+    <select name="agent" th:field="${mission.agent}">
+        <option value="">Select an Agent</option>
+        <th:block th:each="agent : ${agentNames}">
+            <option th:value="${agent}" th:text="${agent}"></option>
+        </th:block>
+    </select>
+    <input type="submit" value="Go!">
+</form>
+</body>
+</html>
+
+<!--<div th:if="${database.agentCount == 0}"><h2>There are currently no agents on mission!</h2></div>
+<div th:unless="${database.agentCount == 0}"><h2>Here are the current agents on mission!</h2>
+    <form action="/viewMissions" method="GET">
+    <select name="agent">
+        <option value="">Select an Agent</option>
+        <option th:each="mission : ${missions}" th:value="${mission.id}" th:text="${mission.agent}"></option>
+    </select>
+        <input type="submit" value="View the mission!">
+    </form>
+</div> -->
